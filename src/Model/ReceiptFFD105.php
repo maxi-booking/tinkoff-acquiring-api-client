@@ -4,10 +4,10 @@ namespace JustCommunication\TinkoffAcquiringAPIClient\Model;
 
 class ReceiptFFD105 implements ReceiptInterface
 {
-    protected ?string $Email = null;
-    protected ?string $Phone = null;
-    protected ?string $Taxation = null;
-    protected ?ReceiptPayments $Payments = null;
+    protected $Email = null;
+    protected $Phone = null;
+    protected $Taxation = null;
+    protected $Payments = null;
 
     /**
      * @var ReceiptItemFFD105[]

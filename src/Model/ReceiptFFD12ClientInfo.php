@@ -7,11 +7,11 @@ use JsonSerializable;
 
 class ReceiptFFD12ClientInfo implements JsonSerializable
 {
-    protected ?DateTime $Birthdate = null;
-    protected ?string $Citizenship = null;
-    protected ?string $DocumentCode = null;
-    protected ?string $DocumentData = null;
-    protected ?string $Address = null;
+    protected $Birthdate = null;
+    protected $Citizenship = null;
+    protected $DocumentCode = null;
+    protected $DocumentData = null;
+    protected $Address = null;
 
     public function getBirthdate(): ?DateTime
     {

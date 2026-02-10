@@ -116,7 +116,7 @@ class InitRequest extends AbstractRequest
      */
     protected $data = [];
 
-    protected ?ReceiptInterface $receipt = null;
+    protected $receipt = null;
 
     /**
      * InitRequest constructor.

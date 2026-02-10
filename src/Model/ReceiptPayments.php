@@ -6,11 +6,11 @@ use JsonSerializable;
 
 class ReceiptPayments implements JsonSerializable
 {
-    protected ?int $Cash = null;
-    protected ?int $Electronic = null;
-    protected ?int $AdvancePayment = null;
-    protected ?int $Credit = null;
-    protected ?int $Provision = null;
+    protected $Cash = null;
+    protected $Electronic = null;
+    protected $AdvancePayment = null;
+    protected $Credit = null;
+    protected $Provision = null;
 
     public function getCash(): ?int
     {
