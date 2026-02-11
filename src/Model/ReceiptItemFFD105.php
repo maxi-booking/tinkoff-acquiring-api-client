@@ -6,10 +6,10 @@ use JsonSerializable;
 
 class ReceiptItemFFD105 implements JsonSerializable
 {
-    protected string $name;
-    protected int $price;
-    protected int $quantity;
-    protected string $tax;
+    protected $name;
+    protected $price;
+    protected $quantity;
+    protected $tax;
     protected $paymentMethod;
     protected $paymentObject;
     protected $measurementUnit;

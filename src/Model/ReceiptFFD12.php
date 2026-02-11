@@ -13,7 +13,7 @@ class ReceiptFFD12 implements ReceiptInterface
     /**
      * @var ReceiptItemFFD12[]
      */
-    protected array $items;
+    protected $items;
 
     public function __construct(?string $email = null, ?string $phone = null, ?string $taxation = null, array $items = [])
     {
