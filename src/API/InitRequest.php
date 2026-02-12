@@ -124,7 +124,7 @@ class InitRequest extends AbstractRequest
      * @param int $Amount сумма в копейках
      * @param string $OrderId идентификатор заказа в системе продавца
      */
-    public function __construct($Amount, $OrderId)
+    public function __construct(int $Amount, string $OrderId)
     {
         $this->Amount = $Amount;
         $this->OrderId = $OrderId;
