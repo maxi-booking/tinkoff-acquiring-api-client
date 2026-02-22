@@ -71,7 +71,7 @@ class ReceiptPayments implements JsonSerializable
     public function jsonSerialize()
     {
         $data = [];
-
+        //хоспади, да собери весь массив сразу и фильтром прогони.
         if ($this->Cash) {
             $data['Cash'] = $this->Cash;
         }

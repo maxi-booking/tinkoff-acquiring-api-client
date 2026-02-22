@@ -6,6 +6,14 @@ use JsonSerializable;
 
 class ReceiptItemFFD105 implements JsonSerializable
 {
+    const FULL_PREPAYMENT = 'full_prepayment';
+    const PREPAYMENT = 'prepayment';
+    const ADVANCE = 'advance';
+    const FULL_PAYMENT = 'full_payment';
+    const PARTIAL_PAYMENT = 'partial_payment';
+    const CREDIT = 'credit';
+    const CREDIT_PAYMENT = 'credit_payment';
+
     protected $name;
     protected $price;
     protected $quantity;
@@ -15,6 +23,10 @@ class ReceiptItemFFD105 implements JsonSerializable
     protected $measurementUnit;
     protected $ean13;
     protected $shopCode;
+
+    protected $agentData;
+
+    protected $supplierInfo;
 
     public function __construct(string $name, int $price, int $quantity, string $tax, ?string $paymentMethod = null, ?string $paymentObject = null, ?string $ean13 = null, ?string $shopCode = null, ?string $measurementUnit = null)
     {
@@ -128,6 +140,16 @@ class ReceiptItemFFD105 implements JsonSerializable
         return $this;
     }
 
+    public function setSupplier(ReceiptSupplier $supplier)
+    {
+        $this->supplierInfo = $supplier;
+    }
+
+    public function setAgent(ReceiptAgent $agent)
+    {
+        $this->agentData = $agent;
+    }
+
     /**
      * @return mixed
      */
@@ -139,29 +161,18 @@ class ReceiptItemFFD105 implements JsonSerializable
             'Price' => $this->price,
             'Quantity' => $this->quantity,
             'Amount' => $this->price * $this->quantity,
-            'Tax' => $this->tax
+            'Tax' => $this->tax,
+            'PaymentMethod' => $this->paymentMethod,
+            'PaymentObject' => $this->paymentObject,
+            'MeasurementUnit' => $this->measurementUnit,
+            'Ean13' => $this->ean13,
+            'ShopCode' => $this->shopCode,
+            'AgentData' => $this->agentData,
+            'SupplierInfo' => $this->supplierInfo
         ];
 
-        if ($this->paymentMethod) {
-            $data['PaymentMethod'] = $this->paymentMethod;
-        }
-
-        if ($this->paymentObject) {
-            $data['PaymentObject'] = $this->paymentObject;
-        }
-
-        if ($this->measurementUnit) {
-            $data['MeasurementUnit'] = $this->measurementUnit;
-        }
-
-        if ($this->ean13) {
-            $data['Ean13'] = $this->ean13;
-        }
-
-        if ($this->shopCode) {
-            $data['ShopCode'] = $this->shopCode;
-        }
-
-        return $data;
+        return  array_filter($data, function ($v) {
+            return $v !== null;
+        });
     }
 }
